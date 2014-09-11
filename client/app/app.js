@@ -10,6 +10,7 @@ angular.module('rideSharingApp', [
   'geocoder',
   'tmh.dynamicLocale',
   'google-maps',
+  'dbaq.google.directions',
   'ui.router'
 ])
 

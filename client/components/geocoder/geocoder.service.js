@@ -133,7 +133,7 @@ angular.module('geocoder', [
 
           var found;
           _.forEach(results, function(result){
-            found = _this.findCityAndCountry(result);
+            found = _this.findShortPlaceName(result);
             if (found) return false; // break forEach
           });
           $log.debug('Geocoded found:', found);
@@ -147,29 +147,23 @@ angular.module('geocoder', [
       return defer.promise;
     },
 
-    findCityAndCountry: function(locationObject) {
+    findShortPlaceName: function(locationObject) {
       var result = {};
       _.forEach(locationObject.address_components, function(component){
-        if (_.indexOf(component.types, 'locality') > -1) {
-          result.city = component.short_name;
+        if (_.indexOf(component.types, 'route') > -1) {
+          result.street = component.short_name;
         }
-        else if (!result.city && _.indexOf(component.types, 'administrative_area_level_1') > -1) {
-          result.city = component.short_name;
+        else if (_.indexOf(component.types, 'street') > -1) {
+          result.street = component.short_name;
         }
-        else if (_.indexOf(component.types, 'country') > -1) {
-          result.country = component.long_name;
-          result.country_code = component.short_name;
+
+        if (_.indexOf(component.types, 'street_number') > -1) {
+          result.number = component.short_name;
         }
       });
 
-      if (result.city) {
-        if (angular.isObject(locationObject.geometry) && angular.isObject(locationObject.geometry.location)) {
-          result.coords = {
-            latitude: locationObject.lat || locationObject.geometry.location.lat(),
-            longitude: locationObject.lng || locationObject.geometry.location.lng(),
-          }
-        }
-        return result;
+      if (result.street && result.number) {
+        return result.street + ' ' + result.number;
       }
 
       return false;

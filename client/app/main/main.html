@@ -16,7 +16,8 @@
   <div class="content">
     <div>
       <span class="status" ng-show="ride.NEW" translate>Right now, I&apos;m waiting for my Liftago driver.</span>
-      <span class="status" ng-show="ride.POB" translate>Check me out, right now, I&apos;m sitting in Liftago taxi.</span>
+      <span class="status" ng-show="ride.POB" translate>Right now, I&apos;m sitting in Liftago taxi and going to <strong>{{destinationPlaceName}}</strong>. Will get off in <strong>{{eta}}&nbsp;min</strong>.</span>
+      <span class="status" ng-show="ride.POB_NO_DEST" translate>Check me out! Right now, I&apos;m sitting in Liftago taxi.</span>
       <span class="status" ng-show="ride.DONE" translate>Hi there, my trip with Liftago is over now.</span>
       <span class="name">~ {{passengerName}}</span>
     </div>

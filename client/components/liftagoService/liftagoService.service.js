@@ -10,7 +10,7 @@ angular.module('rideSharingApp')
         "lon": 14.440993,
         "placeName":null,
       },
-      "state":"ARRIVING",
+      "state":"POB",
       "taxiInfo":{
         "firstName":"Drson",
         "car":{
