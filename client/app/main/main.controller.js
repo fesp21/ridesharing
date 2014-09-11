@@ -92,16 +92,21 @@ angular.module('rideSharingApp')
 
     var args = {
       origin: getLatLonString($scope.markers.pickup.coords),
-      waypoints: [{
+      destination: getLatLonString($scope.markers.destination.coords),
+      waypoints: [],
+      travelMode: 'driving',
+      unitSystem: 'metric',
+      durationInTraffic: true,
+    };
+
+    if ($scope.ride.POB) {
+      // Add Taxi marker on the Route from A to B.
+      args.waypoints.push({
         location: new google.maps.LatLng(
           $scope.markers.taxi.coords.latitude,
           $scope.markers.taxi.coords.longitude
         )
-      }],
-      destination: getLatLonString($scope.markers.destination.coords),
-      travelMode: 'driving',
-      unitSystem: 'metric',
-      durationInTraffic: true,
+      });
     }
 
 
