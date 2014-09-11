@@ -1,0 +1,25 @@
+
+
+<div id="map_canvas">
+  <google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" pan="true">
+
+    <marker coords="markers.pickup.coords" options="markers.options" idkey="markers.pickup.id" icon="markers.pickup.icon"></marker>
+    <marker coords="markers.destination.coords" options="markers.options" idkey="markers.destination.id" icon="markers.destination.icon"></marker>
+    <marker coords="markers.taxi.coords" options="markers.options" idkey="markers.taxi.id" icon="markers.taxi.icon"></marker>
+
+    <polyline path="route.path" stroke="route.stroke" visible="route.visible" clickable="route.clickable" static="true" fit="route.fit"></polyline>
+
+  </google-map>
+</div>
+
+<div class="info-box" ng-cloak>
+  <div class="content">
+    <div>
+      <span class="status" ng-show="ride.NEW" translate>Right now, I&apos;m waiting for my Liftago driver.</span>
+      <span class="status" ng-show="ride.POB" translate>Check me out, right now, I&apos;m sitting in Liftago taxi.</span>
+      <span class="status" ng-show="ride.DONE" translate>Hi there, my trip with Liftago is over now.</span>
+      <span class="name">~ {{passengerName}}</span>
+    </div>
+    <a class="btn" ng-href="{{liftagoLink}}"><span translate>Download Liftago App</span></a>
+  </div>
+</div>

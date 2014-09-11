@@ -1,0 +1,634 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: liftago-mktp\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: crowdin.com\n"
+"Last-Translator: Liftago <crowdin@adleritech.com>\n"
+"Language-Team: Polish\n"
+"Language: pl_PL\n"
+"PO-Revision-Date: 2014-09-09 09:34-0400\n"
+
+#: client/app/services/services.cc/services.cc.html
+msgid "(i.e. You have a payment card processing terminal in your taxi)"
+msgstr "(i.e. You have a payment card processing terminal in your taxi)"
+
+#: client/app/car/car.seats/car.seats.html
+msgid "1-3 passengers"
+msgstr "1-3 passengers"
+
+#: client/app/car/car.seats/car.seats.html
+msgid "10 passengers"
+msgstr "10 passengers"
+
+#: client/app/car/car.seats/car.seats.html
+msgid "4 passengers"
+msgstr "4 passengers"
+
+#: client/app/car/car.seats/car.seats.html
+msgid "5 passengers"
+msgstr "5 passengers"
+
+#: client/app/car/car.seats/car.seats.html
+msgid "6 passengers"
+msgstr "6 passengers"
+
+#: client/app/car/car.seats/car.seats.html
+msgid "7 passengers"
+msgstr "7 passengers"
+
+#: client/app/car/car.seats/car.seats.html
+msgid "8 passengers"
+msgstr "8 passengers"
+
+#: client/app/car/car.seats/car.seats.html
+msgid "9 passengers"
+msgstr "9 passengers"
+
+#: client/app/car/car.color/car.color.html
+msgid ">Blue"
+msgstr ">Blue"
+
+#: client/app/car/car.color/car.color.html
+msgid ">Green"
+msgstr ">Green"
+
+#: client/app/car/car.color/car.color.html
+msgid ">Orange"
+msgstr ">Orange"
+
+#: client/app/car/car.color/car.color.html
+msgid ">Purple"
+msgstr ">Purple"
+
+#: client/app/car/car.color/car.color.html
+msgid ">Red"
+msgstr ">Red"
+
+#: client/app/car/car.color/car.color.html
+msgid ">Silver"
+msgstr ">Silver"
+
+#: client/app/car/car.color/car.color.html
+msgid ">White"
+msgstr ">White"
+
+#: client/app/car/car.color/car.color.html
+msgid ">Yellow"
+msgstr ">Yellow"
+
+#: client/app/register/register.done/register.done.html
+msgid "Account Created"
+msgstr "Account Created"
+
+#: client/app/payments/payments.accountName/payments.accountName.html
+msgid "Account holder name"
+msgstr "Account holder name"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Add"
+msgstr "Add"
+
+#: client/app/tariffs/tariffs.start/tariffs.start.html
+msgid "Add Tariff"
+msgstr "Add Tariff"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Add a new tariff or select a tariff to edit."
+msgstr "Add a new tariff or select a tariff to edit."
+
+#: client/app/payments/payments.account/payments.account.html
+msgid "Add your bank account number so that we can transfer your the income you receive from passengers paying by payment card."
+msgstr "Add your bank account number so that we can transfer your the income you receive from passengers paying by payment card."
+
+#: client/app/profile/profile.photo/profile.photo.html
+msgid "Add your profile picture. Smiling friendly face is what we want."
+msgstr "Add your profile picture. Smiling friendly face is what we want."
+
+#: client/app/register/register.terms/register.terms.html
+msgid "Agree and Continue"
+msgstr "Agree and Continue"
+
+#: client/app/car/car.fuel/car.fuel.html
+msgid "All-Electric"
+msgstr "All-Electric"
+
+#: client/app/login/login.html
+msgid "Authentication Failed"
+msgstr "Authentication Failed"
+
+#: client/app/payments/payments.account/payments.account.html
+msgid "Bank Account"
+msgstr "Bank Account"
+
+#: client/app/car/car.color/car.color.html
+msgid "Black"
+msgstr "Black"
+
+#: client/app/car/car.color/car.color.html
+msgid "Brown"
+msgstr "Brown"
+
+#: client/app/car/car.class/car.class.html
+msgid "Business"
+msgstr "Business"
+
+#: client/components/drFileUpload/drFileUpload.html
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Cancel"
+msgstr "Cancel"
+
+#: client/app/car/car.class/car.class.html
+msgid "Car Class"
+msgstr "Car Class"
+
+#: client/app/car/car.color/car.color.html
+msgid "Car Color"
+msgstr "Car Color"
+
+#: client/app/car/car.engine/car.engine.html
+msgid "Car Engine"
+msgstr "Car Engine"
+
+#: client/app/car/car.fuel/car.fuel.html
+msgid "Car Fuel Type"
+msgstr "Car Fuel Type"
+
+#: client/app/car/car.make.all/car.make.all.html
+#: client/app/car/car.make/car.make.html
+msgid "Car Manufacturer"
+msgstr "Car Manufacturer"
+
+#: client/app/car/car.model/car.model.html
+msgid "Car Model"
+msgstr "Car Model"
+
+#: client/app/car/car.photo/car.photo.html
+msgid "Car Photo - Front View"
+msgstr "Car Photo - Front View"
+
+#: client/app/car/car.plate/car.plate.html
+msgid "Car Plate"
+msgstr "Car Plate"
+
+#: client/app/car/car.seats/car.seats.html
+msgid "Car Seats"
+msgstr "Car Seats"
+
+#: client/app/car/car.type/car.type.html
+msgid "Car Type"
+msgstr "Car Type"
+
+#: client/app/profile/profile.phone.prefix/profile.phone.prefix.html
+msgid "Choose Phone Country"
+msgstr "Choose Phone Country"
+
+#: client/app/register/register.city.choose/register.city.choose.html
+msgid "City was not found."
+msgstr "City was not found."
+
+#: client/app/register/register.city/register.city.html
+msgid "Click the button to continue."
+msgstr "Click the button to continue."
+
+#: client/app/car/car.type/car.type.html
+msgid "Combi"
+msgstr "Combi"
+
+#: client/app/profile/profile.phone.prefix/profile.phone.prefix.html
+msgid "Czech Republic"
+msgstr "Czech Republic"
+
+#: client/app/car/car.class/car.class.controller.js
+#: client/app/car/car.controller.js
+#: client/app/payments/payments.controller.js
+#: client/app/profile/profile.controller.js
+#: client/app/services/services.controller.js
+msgid "Data cannot be saved at the moment. Please try again later."
+msgstr "Data cannot be saved at the moment. Please try again later."
+
+#: client/app/register/register.city/register.city.html
+msgid "Detecting city..."
+msgstr "Detecting city..."
+
+#: client/app/car/car.fuel/car.fuel.html
+msgid "Diesel"
+msgstr "Diesel"
+
+#: client/app/services/services.cc/services.cc.html
+msgid "Do you accept payment cards?"
+msgstr "Do you accept payment cards?"
+
+#: client/app/services/services.childseats/services.childseats.html
+msgid "Do you provide children’s car seats?"
+msgstr "Do you provide children’s car seats?"
+
+#: client/app/car/car.handicap/car.handicap.html
+msgid "Do you provide transport of disabled people?"
+msgstr "Do you provide transport of disabled people?"
+
+#: client/app/services/services.animals/services.animals.html
+msgid "Do you transport animals?"
+msgstr "Do you transport animals?"
+
+#: client/app/car/car.class/car.class.html
+msgid "Economy"
+msgstr "Economy"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Edit"
+msgstr "Edit"
+
+#: client/app/car/car.model/car.model.html
+#: client/app/car/car.plate/car.plate.html
+#: client/app/payments/payments.account/payments.account.html
+msgid "Eg."
+msgstr "Eg."
+
+#: client/app/register/register.email/register.email.html
+msgid "Email is already registered."
+msgstr "Email is already registered."
+
+#: client/app/profile/profile.name/profile.name.html
+msgid "Enter First and Last name"
+msgstr "Enter First and Last name"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+#: client/app/tariffs/tariffs.start/tariffs.start.html
+msgid "Enter the tariffs you have in your car taximeter. (Tariffs will be verified.)"
+msgstr "Enter the tariffs you have in your car taximeter. (Tariffs will be verified.)"
+
+#: client/app/register/register.email/register.email.html
+msgid "Enter your email"
+msgstr "Enter your email"
+
+#: client/app/profile/profile.name/profile.name.html
+msgid "Enter your full name as it appears on your license."
+msgstr "Enter your full name as it appears on your license."
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Fare"
+msgstr "Fare"
+
+#: client/app/profile/profile.name/profile.name.html
+msgid "Full Name"
+msgstr "Full Name"
+
+#: client/app/payments/payments.accountName/payments.accountName.html
+msgid "Full name"
+msgstr "Full name"
+
+#: client/app/car/car.fuel/car.fuel.html
+msgid "Gas (CNG, LPG, LNG)"
+msgstr "Gas (CNG, LPG, LNG)"
+
+#: client/app/car/car.fuel/car.fuel.html
+msgid "Gasoline"
+msgstr "Gasoline"
+
+#: client/app/register/register.terms/register.terms.html
+msgid "Global Terms &amp; Conditions"
+msgstr "Global Terms &amp; Conditions"
+
+#: client/app/finish/finish.html
+msgid "Go Back to App"
+msgstr "Go Back to App"
+
+#: client/app/register/register.done/register.done.html
+msgid "Great! Your Liftago driver account has been successfully created!"
+msgstr "Great! Your Liftago driver account has been successfully created!"
+
+#: client/app/car/car.type/car.type.html
+msgid "Hatchback"
+msgstr "Hatchback"
+
+#: client/app/register/register.password/register.password.html
+msgid "Hide password"
+msgstr "Hide password"
+
+#: client/app/car/car.fuel/car.fuel.html
+msgid "Hybrid"
+msgstr "Hybrid"
+
+#: client/app/finish/finish.html
+msgid "In order to approve your application, please <strong>check your inbox</strong> and send us the list of required licensing documents."
+msgstr "In order to approve your application, please <strong>check your inbox</strong> and send us the list of required licensing documents."
+
+#: client/app/register/register.start/register.start.html
+msgid "In order to start using Liftago you will need to complete:"
+msgstr "In order to start using Liftago you will need to complete:"
+
+#: client/app/register/register.terms/register.terms.html
+msgid "In order to use Liftago service you have to agree with our Terms and Conditions. Also read our Privacy Policy before you continue."
+msgstr "In order to use Liftago service you have to agree with our Terms and Conditions. Also read our Privacy Policy before you continue."
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Initial Fare"
+msgstr "Initial Fare"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Initial fee"
+msgstr "Initial fee"
+
+#: client/app/register/register.city.choose/register.city.choose.html
+#: client/app/register/register.city/register.city.html
+msgid "It's the city where you are operating as a taxi driver."
+msgstr "It's the city where you are operating as a taxi driver."
+
+#: client/app/car/car.type/car.type.html
+msgid "MPV"
+msgstr "MPV"
+
+#: client/app/car/car.year/car.year.html
+msgid "Manufacturing year"
+msgstr "Manufacturing year"
+
+#: client/app/car/car.type/car.type.html
+msgid "Minibus"
+msgstr "Minibus"
+
+#: client/app/car/car.engine/car.engine.html
+#: client/app/car/car.model/car.model.html
+#: client/app/car/car.photo/car.photo.html
+#: client/app/car/car.plate/car.plate.html
+#: client/app/payments/payments.account/payments.account.html
+#: client/app/payments/payments.accountName/payments.accountName.html
+#: client/app/profile/profile.name/profile.name.html
+#: client/app/profile/profile.phone/profile.phone.html
+#: client/app/profile/profile.photo/profile.photo.html
+#: client/app/register/register.city.choose/register.city.choose.html
+#: client/app/register/register.email/register.email.html
+#: client/app/register/register.password/register.password.html
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Next"
+msgstr "Next"
+
+#: client/app/car/car.handicap/car.handicap.html
+#: client/app/services/services.animals/services.animals.html
+#: client/app/services/services.cc/services.cc.html
+#: client/app/services/services.childseats/services.childseats.html
+msgid "No"
+msgstr "No"
+
+#: client/app/register/register.done/register.done.html
+msgid "Now, please continue with completing your driver profile. It will take you about 10 minutes."
+msgstr "Now, please continue with completing your driver profile. It will take you about 10 minutes."
+
+#: client/app/register/register.start/register.start.html
+msgid "Ok. Go!"
+msgstr "Ok. Go!"
+
+#: client/app/car/car.class/car.class.html
+msgid "Only Admin is able to change Car Class."
+msgstr "Only Admin is able to change Car Class."
+
+#: client/app/car/car.plate/car.plate.html
+msgid "Only letters, numbers and a dash is allowed."
+msgstr "Only letters, numbers and a dash is allowed."
+
+#: client/app/car/car.type/car.type.html
+msgid "Other type"
+msgstr "Other type"
+
+#: client/app/profile/profile.phone/profile.phone.html
+msgid "Phone Number"
+msgstr "Phone Number"
+
+#: client/app/profile/profile.phone/profile.phone.html
+msgid "Please add a number you use for everyday communication."
+msgstr "Please add a number you use for everyday communication."
+
+#: client/app/login/login.html
+#: client/app/register/register.failed/register.failed.html
+msgid "Please contact us at <a href=\"mailto:service@liftago.com\">service@liftago.com</a>."
+msgstr "Please contact us at <a href=\"mailto:service@liftago.com\">service@liftago.com</a>."
+
+#: client/app/payments/payments.account/payments.account.html
+msgid "Please enter your bank account number in the format: Prefix-Body/Suffix."
+msgstr "Please enter your bank account number in the format: Prefix-Body/Suffix."
+
+#: client/app/car/car.photo/car.photo.html
+msgid "Please make a picture of your car from <strong>front view</strong>."
+msgstr "Please make a picture of your car from <strong>front view</strong>."
+
+#: client/app/car/car.engine/car.engine.html
+msgid "Please provide us the engine displacement."
+msgstr "Please provide us the engine displacement."
+
+#: client/app/register/register.wait/register.wait.html
+msgid "Please wait..."
+msgstr "Please wait..."
+
+#: client/app/profile/profile.phone.prefix/profile.phone.prefix.html
+msgid "Poland"
+msgstr "Poland"
+
+#: client/app/register/register.terms/register.terms.html
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+#: client/app/profile/profile.photo/profile.photo.html
+msgid "Profile Photo"
+msgstr "Profile Photo"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Rate"
+msgstr "Rate"
+
+#: client/app/register/register.failed/register.failed.html
+msgid "Registration Failed"
+msgstr "Registration Failed"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Remove"
+msgstr "Remove"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Save"
+msgstr "Save"
+
+#: client/app/car/car.type/car.type.html
+msgid "Sedan"
+msgstr "Sedan"
+
+#: client/components/drFileUpload/drFileUpload.html
+msgid "Select file"
+msgstr "Select file"
+
+#: client/components/drFileUpload/drFileUpload.html
+msgid "Select other file"
+msgstr "Select other file"
+
+#: client/app/register/register.city.choose/register.city.choose.html
+#: client/app/register/register.city/register.city.html
+msgid "Select your working city"
+msgstr "Select your working city"
+
+#: client/app/register/register.email/register.email.html
+msgid "Set up your email address"
+msgstr "Set up your email address"
+
+#: client/app/register/register.password/register.password.html
+msgid "Set up your password"
+msgstr "Set up your password"
+
+#: client/app/car/car.make/car.make.html
+msgid "Show All"
+msgstr "Show All"
+
+#: client/app/register/register.password/register.password.html
+msgid "Show password"
+msgstr "Show password"
+
+#: client/app/profile/profile.phone.prefix/profile.phone.prefix.html
+msgid "Slovakia"
+msgstr "Slovakia"
+
+#: client/app/car/car.class/car.class.html
+msgid "Standard"
+msgstr "Standard"
+
+#: client/app/register/register.done/register.done.html
+msgid "Start"
+msgstr "Start"
+
+#: client/app/car/car.class/car.class.controller.js
+msgid "Successfully saved."
+msgstr "Successfully saved."
+
+#: client/app/tariffs/tariffs.list/tariffs.list.controller.js
+msgid "Tariff"
+msgstr "Tariff"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Tariff Name"
+msgstr "Tariff Name"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.controller.js
+msgid "Tariff cannot be removed at the moment."
+msgstr "Tariff cannot be removed at the moment."
+
+#: client/app/tariffs/tariffs.start/tariffs.start.html
+msgid "Taximeter tariffs"
+msgstr "Taximeter tariffs"
+
+#: client/app/register/register.terms/register.terms.html
+msgid "Terms &amp; Conditions"
+msgstr "Terms &amp; Conditions"
+
+#: client/app/finish/finish.html
+msgid "Thank you for completing your driver profile!"
+msgstr "Thank you for completing your driver profile!"
+
+#: client/app/register/register.start/register.start.html
+msgid "The approval process – license verification and background check."
+msgstr "The approval process – license verification and background check."
+
+#: client/app/finish/finish.html
+msgid "The registration part is done and <strong>you are almost finished</strong>."
+msgstr "The registration part is done and <strong>you are almost finished</strong>."
+
+#: client/app/register/register.start/register.start.html
+msgid "The registration process - setting up your account and profile information."
+msgstr "The registration process - setting up your account and profile information."
+
+#: client/app/register/register.start/register.start.html
+msgid "The registration process will take you about 10 minutes and you can start with it right away."
+msgstr "The registration process will take you about 10 minutes and you can start with it right away."
+
+#: client/components/drFileUpload/drFileUpload.html
+msgid "There was an error while uploading the file. Please try again later."
+msgstr "There was an error while uploading the file. Please try again later."
+
+#: client/app/register/register.unlaunched/register.unlaunched.html
+msgid "Unavailable Service Area"
+msgstr "Unavailable Service Area"
+
+#: client/app/register/register.unlaunched/register.unlaunched.html
+msgid "Unfortunately, Liftago is not yet available in your area. We will contact you as soon as Liftago launches and you will be able to join our driver community."
+msgstr "Unfortunately, Liftago is not yet available in your area. We will contact you as soon as Liftago launches and you will be able to join our driver community."
+
+#: client/components/drFileUpload/drFileUpload.html
+msgid "Uploading..."
+msgstr "Uploading..."
+
+#: client/app/finish/finish.html
+msgid "Upon <strong>approval</strong> we will give you <strong>5 free jobs</strong> so you could start enjoying Liftago."
+msgstr "Upon <strong>approval</strong> we will give you <strong>5 free jobs</strong> so you could start enjoying Liftago."
+
+#: client/app/car/car.class/car.class.html
+msgid "VIP"
+msgstr "VIP"
+
+#: client/app/car/car.type/car.type.html
+msgid "Van"
+msgstr "Van"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Waiting"
+msgstr "Waiting"
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Waiting Fare"
+msgstr "Waiting Fare"
+
+#: client/app/register/register.start/register.start.html
+msgid "We are happy you want to become a Liftago Driver!"
+msgstr "We are happy you want to become a Liftago Driver!"
+
+#: client/app/login/login.html
+msgid "We are sorry. There was a problem with authentication."
+msgstr "We are sorry. There was a problem with authentication."
+
+#: client/app/register/register.failed/register.failed.html
+msgid "We are sorry. There was a problem with your registration."
+msgstr "We are sorry. There was a problem with your registration."
+
+#: client/app/register/register.email/register.email.html
+msgid "We will send you important information to this email and it will also serve as your login name."
+msgstr "We will send you important information to this email and it will also serve as your login name."
+
+#: client/app/car/car.handicap/car.handicap.html
+#: client/app/services/services.animals/services.animals.html
+#: client/app/services/services.cc/services.cc.html
+msgid "Yes"
+msgstr "Yes"
+
+#: client/app/services/services.childseats/services.childseats.html
+msgid "Yes. One."
+msgstr "Yes. One."
+
+#: client/app/services/services.childseats/services.childseats.html
+msgid "Yes. Three."
+msgstr "Yes. Three."
+
+#: client/app/services/services.childseats/services.childseats.html
+msgid "Yes. Two."
+msgstr "Yes. Two."
+
+#: client/app/register/register.password/register.password.html
+msgid "You will be asked for your password while signing in to Liftago Driver app."
+msgstr "You will be asked for your password while signing in to Liftago Driver app."
+
+#: client/app/register/register.done/register.done.html
+msgid "Your login name is <strong>{{user.email}}</strong>. <br> Please make sure to remember your password."
+msgstr "Your login name is <strong>{{user.email}}</strong>. <br> Please make sure to remember your password."
+
+#: client/app/tariffs/tariffs.list/tariffs.list.html
+msgid "Your taximeter tariffs"
+msgstr "Your taximeter tariffs"
+
+#: client/app/register/register.city/register.city.html
+msgid "choose another city"
+msgstr "choose another city"
+
+#: client/app/register/register.city/register.city.html
+msgid "or"
+msgstr "or"
+
+#: client/app/car/car.year/car.year.html
+msgid "{{year}}"
+msgstr "{{year}}"
+
