@@ -1,0 +1,35 @@
+{"data": {
+  "taxiPos":{
+    "lat": 50.077175,
+    "lon": 14.440993,
+    "placeName":null
+  },
+  "state":"CANCELLED",
+  "taxiInfo":{
+    "firstName":"Drson",
+    "car":{
+      "brand":"Chevrolet",
+      "colorId":8,
+      "model":"Orlando"
+    }
+  },
+  "passengerInfo":{
+    "firstName":"Betka",
+    "refcode":"+12345"
+  },
+  "destination":{
+    "lat": 50.071437,
+    "lon": 14.414340,
+    "placeName":"Rašínovo nábřeží 58, 128 00 Praha 2, Czech Republic"
+  },
+  "pickup":{
+    "lat": 50.082564,
+    "lon": 14.455625,
+    "placeName":"Táboritská 580/20, 130 00 Praha, Czech Republic"
+  },
+  "dropOffPosition":{
+    "lat": 50.082564,
+    "lon": 14.455625,
+    "placeName":"Táboritská 580/20, 130 00 Praha, Czech Republic"
+  }
+}}

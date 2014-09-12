@@ -7,6 +7,7 @@ angular.module('rideSharingApp', [
   'angulartics',
   'angulartics.google.analytics',
   'gettext',
+  'emguo.poller',
   'geocoder',
   'tmh.dynamicLocale',
   'google-maps',

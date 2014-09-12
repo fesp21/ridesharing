@@ -12,21 +12,8 @@ angular.module('rideSharingApp')
     Ride.prototype = Object.create(PropertyModel.prototype);
 
     Ride.prototype.accessors = {
-      get_colorName: function () {
-        return carColors[this.properties.colorId];
-      },
-      get_fullName: function () {
-        return this.properties.brand + ' ' + this.properties.model;
-      },
-      get_imageFront: function () {
-        var uuid = null;
-        _(this.properties.images).forEach(function (image) {
-          if (image.key == 'RideFront' && image.image && image.image.uuid) {
-            uuid = image.image.uuid;
-            return false; // break forEach
-          }
-        });
-        return uuid;
+      get_destination: function () {
+        return this.properties.destination || this.properties.dropOffPosition;
       }
     };
 

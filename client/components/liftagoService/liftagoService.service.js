@@ -1,59 +1,7 @@
 'use strict';
 
 angular.module('rideSharingApp')
-  .factory('liftagoService', function ($q, $timeout, $http, $log, appConfig, Ride) {
-
-    var mockRide = {
-      "pickupArrivalAt":"2014-09-03T19:38:01.060Z",
-      "taxiPos":{ // Palo fake
-        "lat": 50.077175,
-        "lon": 14.440993,
-        "placeName":null,
-      },
-      "state":"POB",
-      "taxiInfo":{
-        "firstName":"Drson",
-        "car":{
-          "brand":"Chevrolet",
-          "colorId":8,
-          "model":"Orlando",
-        },
-      },
-      "orderedAt":"2014-09-03T19:32:56.356Z",
-      "arrivalPeriod":180,
-      "finishedAt":"2014-09-03T19:47:57.537Z",
-      "startRideAt":"2014-09-03T19:38:04.852Z",
-      "passengerInfo":{
-        "firstName":"Marlohe",
-        "refcode":"+12345"
-      },
-      "taxiId":"800002542",
-      "canceledAt":null,
-      "destination":{
-        "lat": 50.071437,
-        "lon": 14.414340,
-        "placeName":"Rašínovo nábřeží 58, 128 00 Praha 2, Czech Republic",
-      },
-      "estimatedPrice":{
-        "amount":"138.8477763152979",
-        "ccy":"CZK"
-      },
-      "pickup":{
-        "lat": 50.082564,
-        "lon": 14.455625,
-        "placeName":"Táboritská 580/20, 130 00 Praha, Czech Republic",
-      },
-      "dropOffPosition":{ // Palo fake
-        "lat": 50.082564,
-        "lon": 14.455625,
-        "placeName":"Táboritská 580/20, 130 00 Praha, Czech Republic",
-      },
-      "passengerPos":{
-        "lat": 50.082564,
-        "lon": 14.455625,
-        "placeName":null,
-      },
-    };
+  .factory('liftagoService', function ($q, $timeout, $resource, $http, $log, poller, appConfig, Ride) {
 
     var baseUrl = appConfig.get('api.url').trim('/') + '/';
 
@@ -88,13 +36,48 @@ angular.module('rideSharingApp')
       }, 100);
 
       return defer.promise;
-    }
+    };
+
+    var getRidePoller = function(rideHash) {
+      var resource = $resource(baseUrl + 'rideInfoShare/:hash/', {hash: rideHash}, {
+        query: {
+          method: 'GET',
+          isArray: false
+        }
+      });
+
+      return poller.get(resource, {
+        action: 'query',
+        delay: 10000,
+        smart: true
+      });
+    };
+
+
+    var preprocessRideResult = function(response) {
+      $log.debug('RideInfo:', response.data);
+      return new Ride(response.data);
+    };
+
+    var ridePollerPromise;
+
+
+
+
 
     // Public API here
     return {
 
+      getRideInfoPoller: function(rideHash) {
+        // Init poller
+        if (!ridePollerPromise) {
+          ridePollerPromise = getRidePoller(rideHash).promise.then(null, null, preprocessRideResult);
+        }
+        return ridePollerPromise;
+      },
+
       getRideInfo: function(rideHash) {
-        return httpGet('rideSharingInfo/' + rideHash).then(function(response){
+        return httpGet('rideInfoShare/' + rideHash).then(function(response) {
           if (response.status === 204) {
             return false;
           }

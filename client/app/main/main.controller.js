@@ -1,27 +1,96 @@
 'use strict';
 
 angular.module('rideSharingApp')
-  .controller('MainCtrl', function ($scope, $http, $locale, googleDirections, Geocoder, appConfig, rideInfo) {
-
+  .controller('MainCtrl', function ($scope, $http, $log, $locale, googleDirections, Geocoder, appConfig, liftagoService, rideInfo, rideHash) {
 
     var getLatLonString = function(coords) {
-      return coords.latitude + ',' + coords.longitude;
+      return coords.lat + ',' + coords.lon;
     }
 
-    $scope.locale = $locale.id;
+    var updateRideInfo = function(ride) {
+      var state = rideInfo.get('state');
 
-    //$scope.ride = rideInfo;
-    var state = rideInfo.get('state');
+      $scope.ride.NEW = state == 'CREATED' || state == 'WAITING';
+      $scope.ride.POB = state == 'POB' && rideInfo.get('destination') && rideInfo.get('destination').lat;
+      $scope.ride.POB_NO_DEST = state == 'POB' && !rideInfo.get('destination');
+      $scope.ride.DONE = state == 'FINISHED' || state == 'TIMEOUTED' || state == 'CANCELLED';
 
-    $scope.ride = {
-      NEW: state == 'ARRIVING' || state == 'WAITING',
-      POB: state == 'POB' && rideInfo.get('destination') && rideInfo.get('destination').lat,
-      POB_NO_DEST: state == 'POB' && !rideInfo.get('destination'),
-      DONE: state == 'FINISHED' || state == 'TIMEOUT',
+      // Do not show Taxi marker on a map iff Ride has Done.
+      if (!$scope.ride.DONE) {
+        $scope.markers.taxi.coords = {
+          latitude: rideInfo.get('taxiPos').lat,
+          longitude: rideInfo.get('taxiPos').lon,
+        };
+      }
     };
 
-    $scope.passengerName = rideInfo.get('passengerInfo').firstName;
+    var updateRoute = function(ride) {
+      if (!rideInfo.get('destination')) return false;
 
+      var directionsOptions = {
+        origin: getLatLonString(rideInfo.get('pickup')),
+        destination: getLatLonString(rideInfo.get('destination')),
+        waypoints: [],
+        travelMode: 'driving',
+        unitSystem: 'metric',
+        durationInTraffic: true,
+      };
+
+      if (rideInfo.get('state') == 'POB' && rideInfo.get('taxiPos')) {
+        // Add Taxi marker on the Route from A to B.
+        var taxiPos = rideInfo.get('taxiPos');
+        directionsOptions.waypoints.push({
+          location: new google.maps.LatLng(taxiPos.lat, taxiPos.lon)
+        });
+      }
+
+      googleDirections.getDirections(directionsOptions).then(function(directions) {
+        if (directions.routes.length) {
+          var route = directions.routes[0];
+          $scope.route.path = route.overview_path;
+          $scope.route.visible = true;
+          if (route.legs.length > 0) {
+            $scope.eta = Math.round(route.legs[route.legs.length - 1].duration.value / 60);
+          }
+        }
+      });
+    };
+
+    var updateDestinationPlaceName = function(ride) {
+      if (!ride.get('destination')) return false;
+
+      var destinationCoords = {
+        latitude: ride.get('destination').lat,
+        longitude: ride.get('destination').lon,
+      };
+
+      Geocoder.getLocation(destinationCoords).then(function(location){
+        if (location) {
+          $scope.destinationPlaceName = location;
+        }
+      });
+
+      var longAddress = rideInfo.get('destination').placeName.split(',');
+      $scope.destinationPlaceName = longAddress[0];
+    };
+
+
+    liftagoService.getRideInfoPoller(rideHash).then(null, null, function(ride){
+      $log.debug('Yay! New ride data are here!', ride);
+      updateRideInfo(ride);
+    });
+
+
+
+    // --- Initialize Scope Variables ---
+
+    var lang = $locale.id.substr(0,2);
+    $scope.liftagoLink = appConfig.get('web.url') + '/' + lang + '/app/install/taxi/' + rideInfo.get('passengerInfo').refcode + '+It+sms';
+
+    $scope.eta = '–';
+
+    $scope.ride = {};
+    $scope.passengerName = rideInfo.get('passengerInfo').firstName;
     $scope.map = {
       center: {
         latitude: rideInfo.get('pickup').lat,
@@ -52,7 +121,7 @@ angular.module('rideSharingApp')
       },
 
       destination: {
-        id: 1,
+        id: 2,
         coords: {
           latitude: rideInfo.get('destination').lat,
           longitude: rideInfo.get('destination').lon,
@@ -61,11 +130,8 @@ angular.module('rideSharingApp')
       },
 
       taxi: {
-        id: 1,
-        coords: {
-          latitude: rideInfo.get('taxiPos').lat,
-          longitude: rideInfo.get('taxiPos').lon,
-        },
+        id: 3,
+        coords: {},
         icon: 'assets/images/pin-taxi.png',
       },
 
@@ -90,48 +156,7 @@ angular.module('rideSharingApp')
       fit: true,
     };
 
-    var directionsOptions = {
-      origin: getLatLonString($scope.markers.pickup.coords),
-      destination: getLatLonString($scope.markers.destination.coords),
-      waypoints: [],
-      travelMode: 'driving',
-      unitSystem: 'metric',
-      durationInTraffic: true,
-    };
-
-    if ($scope.ride.POB) {
-      // Add Taxi marker on the Route from A to B.
-      directionsOptions.waypoints.push({
-        location: new google.maps.LatLng(
-          $scope.markers.taxi.coords.latitude,
-          $scope.markers.taxi.coords.longitude
-        )
-      });
-    }
-
-
-    googleDirections.getDirections(directionsOptions).then(function(directions) {
-      if (directions.routes.length) {
-        var route = directions.routes[0];
-        $scope.route.path = route.overview_path;
-        $scope.route.visible = true;
-        if (route.legs.length > 0) {
-          $scope.eta = Math.round(route.legs[route.legs.length - 1].duration.value / 60);
-        }
-      }
-    });
-
-    Geocoder.getLocation($scope.markers.destination.coords).then(function(location){
-      if (location) {
-        $scope.destinationPlaceName = location;
-      }
-
-    });
-
-    var longAddress = rideInfo.get('destination').placeName.split(',');
-    $scope.destinationPlaceName = longAddress[0];
-    $scope.eta = '--';
-
-    var lang = $locale.id.substr(0,2);
-    $scope.liftagoLink = appConfig.get('web.url') + '/' + lang + '/app/install/taxi/' + rideInfo.get('passengerInfo').refcode + '+It+sms';
+    updateRideInfo(rideInfo);
+    updateRoute(rideInfo);
+    updateDestinationPlaceName(rideInfo);
   });
