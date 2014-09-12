@@ -90,7 +90,7 @@ angular.module('rideSharingApp')
       fit: true,
     };
 
-    var args = {
+    var directionsOptions = {
       origin: getLatLonString($scope.markers.pickup.coords),
       destination: getLatLonString($scope.markers.destination.coords),
       waypoints: [],
@@ -101,7 +101,7 @@ angular.module('rideSharingApp')
 
     if ($scope.ride.POB) {
       // Add Taxi marker on the Route from A to B.
-      args.waypoints.push({
+      directionsOptions.waypoints.push({
         location: new google.maps.LatLng(
           $scope.markers.taxi.coords.latitude,
           $scope.markers.taxi.coords.longitude
@@ -110,10 +110,15 @@ angular.module('rideSharingApp')
     }
 
 
-    googleDirections.getDirections(args).then(function(directions) {
-      $scope.route.path = directions.routes[0].overview_path;
-      $scope.route.visible = true;
-      $scope.eta = Math.round(directions.routes[0].legs[1].duration.value / 60);
+    googleDirections.getDirections(directionsOptions).then(function(directions) {
+      if (directions.routes.length) {
+        var route = directions.routes[0];
+        $scope.route.path = route.overview_path;
+        $scope.route.visible = true;
+        if (route.legs.length > 0) {
+          $scope.eta = Math.round(route.legs[route.legs.length - 1].duration.value / 60);
+        }
+      }
     });
 
     Geocoder.getLocation($scope.markers.destination.coords).then(function(location){
