@@ -1,44 +1,46 @@
 'use strict';
 
 angular.module('rideSharingApp')
-  .controller('MainCtrl', function ($scope, $http, $log, $locale, googleDirections, Geocoder, appConfig, liftagoService, rideInfo, rideHash) {
+  .controller('MainCtrl', function ($scope, $http, $log, $interval, $locale, googleDirections, Geocoder, appConfig, liftagoService, rideInfo, rideHash) {
 
     var getLatLonString = function(coords) {
       return coords.lat + ',' + coords.lon;
     }
 
     var updateRideInfo = function(ride) {
-      var state = rideInfo.get('state');
+      var state = ride.get('state');
+
+      $scope.state = state;
 
       $scope.ride.NEW = state == 'CREATED' || state == 'WAITING';
-      $scope.ride.POB = state == 'POB' && rideInfo.get('destination') && rideInfo.get('destination').lat;
-      $scope.ride.POB_NO_DEST = state == 'POB' && !rideInfo.get('destination');
-      $scope.ride.DONE = state == 'FINISHED' || state == 'TIMEOUTED' || state == 'CANCELLED';
+      $scope.ride.POB = state == 'POB' && ride.get('destination') && ride.get('destination').lat;
+      $scope.ride.POB_NO_DEST = state == 'POB' && !ride.get('destination');
+      $scope.ride.DONE = ride.isDone();
 
       // Do not show Taxi marker on a map iff Ride has Done.
       if (!$scope.ride.DONE) {
         $scope.markers.taxi.coords = {
-          latitude: rideInfo.get('taxiPos').lat,
-          longitude: rideInfo.get('taxiPos').lon,
+          latitude: ride.get('taxiPos').lat,
+          longitude: ride.get('taxiPos').lon,
         };
       }
     };
 
     var updateRoute = function(ride) {
-      if (!rideInfo.get('destination')) return false;
+      if (!ride.get('destination')) return false;
 
       var directionsOptions = {
-        origin: getLatLonString(rideInfo.get('pickup')),
-        destination: getLatLonString(rideInfo.get('destination')),
+        origin: getLatLonString(ride.get('pickup')),
+        destination: getLatLonString(ride.get('destination')),
         waypoints: [],
         travelMode: 'driving',
         unitSystem: 'metric',
         durationInTraffic: true,
       };
 
-      if (rideInfo.get('state') == 'POB' && rideInfo.get('taxiPos')) {
+      if (ride.get('state') == 'POB' && ride.get('taxiPos')) {
         // Add Taxi marker on the Route from A to B.
-        var taxiPos = rideInfo.get('taxiPos');
+        var taxiPos = ride.get('taxiPos');
         directionsOptions.waypoints.push({
           location: new google.maps.LatLng(taxiPos.lat, taxiPos.lon)
         });
@@ -70,16 +72,9 @@ angular.module('rideSharingApp')
         }
       });
 
-      var longAddress = rideInfo.get('destination').placeName.split(',');
+      var longAddress = ride.get('destination').placeName.split(',');
       $scope.destinationPlaceName = longAddress[0];
     };
-
-
-    liftagoService.getRideInfoPoller(rideHash).then(null, null, function(ride){
-      $log.debug('Yay! New ride data are here!', ride);
-      updateRideInfo(ride);
-    });
-
 
 
     // --- Initialize Scope Variables ---
@@ -159,4 +154,48 @@ angular.module('rideSharingApp')
     updateRideInfo(rideInfo);
     updateRoute(rideInfo);
     updateDestinationPlaceName(rideInfo);
+
+    var intervalRouteUpdater = $interval(function(){
+      $log.debug('Interval updating Route.');
+      updateRoute(rideInfo);
+    }, 60000);
+
+    var cancelStateWatcher = $scope.$watch('state', function(state, oldState){
+      if (state === oldState) return;
+
+      $log.debug('Watcher updating Route.');
+      updateRoute(rideInfo);
+
+      // In final state show the taxi marker.
+      if (oldState == 'POB') {
+        $scope.markers.taxi.coords = {
+          latitude: rideInfo.get('taxiPos').lat,
+          longitude: rideInfo.get('taxiPos').lon,
+        };
+
+      }
+    });
+
+
+    liftagoService.getRideInfoPoller(rideHash).then(null, null, function(ride){
+      // Update the rideInfo object first so that Interval and Watcher are ok with using rideInfo
+      rideInfo = ride;
+
+      $log.debug('Yay! New ride data are here!', ride);
+      updateRideInfo(ride);
+
+      if (ride.isDone()) {
+        $log.debug('Stopping Poller, Interval and Watcher.');
+        updateRoute(ride);
+
+        liftagoService.stopPoller();
+        //cancelStateWatcher();
+        $interval.cancel(intervalRouteUpdater);
+      }
+    });
+
+
+
+
+
   });

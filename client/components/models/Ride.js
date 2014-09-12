@@ -17,5 +17,10 @@ angular.module('rideSharingApp')
       }
     };
 
-      return Ride;
+    Ride.prototype.isDone = function() {
+      var state = this.properties.state;
+      return state == 'FINISHED' || state == 'TIMEOUTED' || state == 'CANCELLED'
+    };
+
+    return Ride;
   });

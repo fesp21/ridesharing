@@ -62,11 +62,12 @@ angular.module('rideSharingApp')
     var ridePollerPromise;
 
 
-
-
-
     // Public API here
     return {
+
+      stopPoller: function() {
+        poller.stopAll();
+      },
 
       getRideInfoPoller: function(rideHash) {
         // Init poller
