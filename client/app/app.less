@@ -16,14 +16,11 @@
 }
 
 #branding {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right:0;
-  padding-top: 25%;
-  text-align: center;
-  background-color: #16496F;
+  position: absolute;
+  top: 10px;
+  left: 33.5%; /* old browsers fallback */
+  left: calc(100% - 66.5px);
+  z-index: 100;
 
   img {
     display: block;
