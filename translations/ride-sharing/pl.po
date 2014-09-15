@@ -9,11 +9,11 @@ msgstr ""
 "Last-Translator: Liftago <crowdin@adleritech.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2014-09-15 03:55-0400\n"
+"PO-Revision-Date: 2014-09-15 08:50-0400\n"
 
 #: client/app/main/main.html
-msgid "Check me out! Right now, I&apos;m sitting in Liftago taxi."
-msgstr "Check me out! Right now, I&apos;m sitting in Liftago taxi."
+msgid "Check me out! Right now, I'm sitting in Liftago taxi."
+msgstr "Check me out! Right now, I'm sitting in Liftago taxi."
 
 #: client/app/main/main.html
 msgid "Download Liftago App"
@@ -28,10 +28,10 @@ msgid "My Liftago Ride"
 msgstr "My Liftago Ride"
 
 #: client/app/main/main.html
-msgid "Right now, I&apos;m sitting in Liftago taxi and going to <strong>{{destinationPlaceName}}</strong>. Will get off in <strong>{{eta}}&nbsp;min</strong>."
-msgstr "Right now, I&apos;m sitting in Liftago taxi and going to <strong>{{destinationPlaceName}}</strong>. Will get off in <strong>{{eta}}&nbsp;min</strong>."
+msgid "Right now, I'm sitting in Liftago taxi and going to <strong>{{destinationPlaceName}}</strong>. Will get off in <strong>{{eta}}&nbsp;min</strong>."
+msgstr "Right now, I'm sitting in Liftago taxi and going to <strong>{{destinationPlaceName}}</strong>. Will get off in <strong>{{eta}}&nbsp;min</strong>."
 
 #: client/app/main/main.html
-msgid "Right now, I&apos;m waiting for my Liftago driver."
-msgstr "Right now, I&apos;m waiting for my Liftago driver."
+msgid "Right now, I'm waiting for my Liftago driver."
+msgstr "Right now, I'm waiting for my Liftago driver."
 

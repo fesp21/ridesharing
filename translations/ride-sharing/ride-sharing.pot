@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: client/app/main/main.html
-msgid "Check me out! Right now, I&apos;m sitting in Liftago taxi."
+msgid "Check me out! Right now, I'm sitting in Liftago taxi."
 msgstr ""
 
 #: client/app/main/main.html
@@ -21,9 +21,9 @@ msgid "My Liftago Ride"
 msgstr ""
 
 #: client/app/main/main.html
-msgid "Right now, I&apos;m sitting in Liftago taxi and going to <strong>{{destinationPlaceName}}</strong>. Will get off in <strong>{{eta}}&nbsp;min</strong>."
+msgid "Right now, I'm sitting in Liftago taxi and going to <strong>{{destinationPlaceName}}</strong>. Will get off in <strong>{{eta}}&nbsp;min</strong>."
 msgstr ""
 
 #: client/app/main/main.html
-msgid "Right now, I&apos;m waiting for my Liftago driver."
+msgid "Right now, I'm waiting for my Liftago driver."
 msgstr ""
