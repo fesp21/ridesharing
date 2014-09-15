@@ -39,7 +39,7 @@ angular.module('rideSharingApp')
     };
 
     var getRidePoller = function(rideHash) {
-      var resource = $resource(baseUrl + 'rideInfoShare/:hash/', {hash: rideHash}, {
+      var resource = $resource(baseUrl + 'rideinfoshares/:hash/', {hash: rideHash}, {
         query: {
           method: 'GET',
           isArray: false
@@ -78,7 +78,7 @@ angular.module('rideSharingApp')
       },
 
       getRideInfo: function(rideHash) {
-        return httpGet('rideInfoShare/' + rideHash).then(function(response) {
+        return httpGet('rideinfoshares/' + rideHash).then(function(response) {
           if (response.status === 204) {
             return false;
           }
