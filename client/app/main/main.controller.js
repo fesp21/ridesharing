@@ -2,10 +2,34 @@
 
 angular.module('rideSharingApp')
   .controller('MainCtrl', function ($scope, $http, $log, $interval, $timeout, $locale, googleDirections, Geocoder, appConfig, liftagoService, rideInfo, rideHash) {
+    var mapControl = {};
+
+    var getMapBounds = function(latLgnBounds) {
+      var
+        ne = latLgnBounds.getNorthEast(),
+        sw = latLgnBounds.getSouthWest();
+
+      return {
+        northeast: {
+          latitude: ne.lat(),
+          longitude: ne.lng(),
+        },
+        southwest: {
+          latitude: sw.lat(),
+          longitude: sw.lng(),
+        }
+      };
+
+    }
 
     var getLatLonString = function(coords) {
       return coords.lat + ',' + coords.lon;
+    };
+
+    var getLatLng = function(coords) {
+      return new google.maps.LatLng(coords.latitude, coords.longitude);
     }
+
 
     var updateRideInfo = function(ride) {
       var state = ride.get('state');
@@ -25,6 +49,25 @@ angular.module('rideSharingApp')
         };
       }
     };
+
+    /**
+     * Uses #scope.markers to update the map bounds
+     */
+    var updateMapBounds = function() {
+      var bounds = new google.maps.LatLngBounds();
+      _($scope.markers).forEach(function(marker){
+        if (marker.coords && marker.coords.latitude) {
+          var coords = getLatLng(marker.coords);
+          bounds.extend(coords);
+        }
+      });
+      $scope.map.bounds = getMapBounds(bounds);
+
+      $scope.map.center = {
+        latitude: bounds.getCenter().lat(),
+        longitude: bounds.getCenter().lng(),
+      };
+    }
 
     var updateRoute = function(ride) {
       if (!ride.get('destination')) return false;
@@ -99,6 +142,7 @@ angular.module('rideSharingApp')
         longitude: rideInfo.get('pickup').lon,
       },
       zoom: 14,
+      control: mapControl,
       options: {
         scrollwheel: false,
         draggable: true,
@@ -171,6 +215,7 @@ angular.module('rideSharingApp')
 
 
     updateRideInfo(rideInfo);
+    updateMapBounds();
     updateRoute(rideInfo);
     updateDestinationPlaceName(rideInfo);
     updateInfoBoxHeight();
@@ -215,9 +260,5 @@ angular.module('rideSharingApp')
         $interval.cancel(intervalRouteUpdater);
       }
     });
-
-
-
-
 
   });
