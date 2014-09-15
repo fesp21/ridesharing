@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rideSharingApp')
-  .controller('MainCtrl', function ($scope, $http, $log, $interval, $locale, googleDirections, Geocoder, appConfig, liftagoService, rideInfo, rideHash) {
+  .controller('MainCtrl', function ($scope, $http, $log, $interval, $timeout, $locale, googleDirections, Geocoder, appConfig, liftagoService, rideInfo, rideHash) {
 
     var getLatLonString = function(coords) {
       return coords.lat + ',' + coords.lon;
@@ -57,6 +57,13 @@ angular.module('rideSharingApp')
         }
       });
     };
+
+    var updateInfoBoxHeight = function() {
+      $timeout(function(){
+        angular.element('#map_canvas').css('bottom', angular.element('#info_box').height() + 'px');
+        //$log.debug('New InfoBox Height:', angular.element('#info_box').height());
+      }, 100);
+    }
 
     var updateDestinationPlaceName = function(ride) {
       if (!ride.get('destination')) return false;
@@ -154,13 +161,15 @@ angular.module('rideSharingApp')
     updateRideInfo(rideInfo);
     updateRoute(rideInfo);
     updateDestinationPlaceName(rideInfo);
+    updateInfoBoxHeight();
+
 
     var intervalRouteUpdater = $interval(function(){
       $log.debug('Interval updating Route.');
       updateRoute(rideInfo);
     }, 60000);
 
-    var cancelStateWatcher = $scope.$watch('state', function(state, oldState){
+    $scope.$watch('state', function(state, oldState){
       if (state === oldState) return;
 
       $log.debug('Watcher updating Route.');
@@ -172,8 +181,10 @@ angular.module('rideSharingApp')
           latitude: rideInfo.get('taxiPos').lat,
           longitude: rideInfo.get('taxiPos').lon,
         };
-
       }
+
+      // Update Height of Map Canvas
+      updateInfoBoxHeight();
     });
 
 
@@ -185,11 +196,10 @@ angular.module('rideSharingApp')
       updateRideInfo(ride);
 
       if (ride.isDone()) {
-        $log.debug('Stopping Poller, Interval and Watcher.');
+        $log.debug('Stopping Poller, Interval.');
         updateRoute(ride);
 
         liftagoService.stopPoller();
-        //cancelStateWatcher();
         $interval.cancel(intervalRouteUpdater);
       }
     });
