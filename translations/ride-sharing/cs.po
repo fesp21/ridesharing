@@ -3,27 +3,35 @@ msgstr ""
 "Project-Id-Version: liftago-mktp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: crowdin.com\n"
+"Last-Translator: Liftago <crowdin@adleritech.com>\n"
+"Language-Team: Czech\n"
+"Language: cs_CZ\n"
+"PO-Revision-Date: 2014-09-15 03:55-0400\n"
 
 #: client/app/main/main.html
 msgid "Check me out! Right now, I&apos;m sitting in Liftago taxi."
-msgstr ""
+msgstr "Podívejte se na mě! Právě teď, já sedím v Liftago taxi."
 
 #: client/app/main/main.html
 msgid "Download Liftago App"
-msgstr ""
+msgstr "Stáhněte si appku Liftago"
 
 #: client/app/main/main.html
 msgid "Hi there, my trip with Liftago is over now."
-msgstr ""
+msgstr "Ahoj, moje cesta s Liftago je u konce."
 
 #: client/index.html
 msgid "My Liftago Ride"
-msgstr ""
+msgstr "Moje Liftago jízda"
 
 #: client/app/main/main.html
 msgid "Right now, I&apos;m sitting in Liftago taxi and going to <strong>{{destinationPlaceName}}</strong>. Will get off in <strong>{{eta}}&nbsp;min</strong>."
-msgstr ""
+msgstr "Právě teď, já jsem seděl v Liftago taxi a na <strong>{{destinationPlaceName}}</strong>. Vystoupím v <strong>{{eta}} min</strong>."
 
 #: client/app/main/main.html
 msgid "Right now, I&apos;m waiting for my Liftago driver."
-msgstr ""
+msgstr "Právě teď čekám na mého Liftago řidiče."
+

@@ -474,7 +474,7 @@ module.exports = function (grunt) {
     nggettext_compile: {
       all: {
         files: {
-          '<%= yeoman.client %>/app/translations/translations.js': ['translations/*.po']
+          '<%= yeoman.client %>/app/translations/translations.js': ['translations/**/*.po']
         }
       },
     },
