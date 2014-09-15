@@ -130,7 +130,8 @@ angular.module('rideSharingApp')
     // --- Initialize Scope Variables ---
 
     var lang = $locale.id.substr(0,2);
-    $scope.liftagoLink = appConfig.get('web.url') + '/' + lang + '/app/install/taxi/' + rideInfo.get('passengerInfo').refcode + '+It+sms';
+    lang = (lang === 'en') ? '' : '/' + lang;
+    $scope.liftagoLink = appConfig.get('web.url') + lang + '/app/install/taxi/+' + rideInfo.get('refcode') + '+It+sms';
 
     $scope.eta = '–';
 
