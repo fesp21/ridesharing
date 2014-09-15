@@ -125,8 +125,6 @@ angular.module('rideSharingApp')
       destination: {
         id: 2,
         coords: {
-          latitude: rideInfo.get('destination').lat,
-          longitude: rideInfo.get('destination').lon,
         },
         icon: 'assets/images/pin-b.png',
       },
@@ -146,7 +144,6 @@ angular.module('rideSharingApp')
       id: 1,
       path: [
         $scope.markers.pickup.coords,
-        $scope.markers.destination.coords,
       ],
       stroke: {
         color: '#16496F',
@@ -157,6 +154,21 @@ angular.module('rideSharingApp')
       clickable: false,
       fit: true,
     };
+
+    // Only in case DESTINATION is known
+    if (rideInfo.get('destination')) {
+      $scope.markers.destination.coords = {
+        latitude: rideInfo.get('destination').lat,
+        longitude: rideInfo.get('destination').lon,
+      };
+
+      $scope.route.path = [
+        $scope.markers.pickup.coords,
+        $scope.markers.destination.coords,
+      ];
+    }
+
+
 
     updateRideInfo(rideInfo);
     updateRoute(rideInfo);
