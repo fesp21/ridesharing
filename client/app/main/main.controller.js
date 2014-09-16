@@ -122,8 +122,10 @@ angular.module('rideSharingApp')
         }
       });
 
-      var longAddress = ride.get('destination').placeName.split(',');
-      $scope.destinationPlaceName = longAddress[0];
+      if (ride.get('destination').placeName) {
+        var longAddress = ride.get('destination').placeName.split(',');
+        $scope.destinationPlaceName = longAddress[0];
+      }
     };
 
 
@@ -250,7 +252,6 @@ angular.module('rideSharingApp')
       // Update the rideInfo object first so that Interval and Watcher are ok with using rideInfo
       rideInfo = ride;
 
-      $log.debug('Yay! New ride data are here!', ride);
       updateRideInfo(ride);
 
       if (ride.isDone()) {

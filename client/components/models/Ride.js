@@ -13,7 +13,7 @@ angular.module('rideSharingApp')
 
     Ride.prototype.accessors = {
       get_destination: function () {
-        return this.properties.destination || this.properties.dropOffPosition;
+        return this.properties.destination || (this.properties.dropOffPos && this.properties.dropOffPos.location);
       },
       get_refcode: function() {
         return this.properties.refCode;
