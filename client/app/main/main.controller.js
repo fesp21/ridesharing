@@ -81,9 +81,9 @@ angular.module('rideSharingApp')
         durationInTraffic: true,
       };
 
-      if (ride.get('state') == 'POB' && ride.get('taxiPos')) {
-        // Add Taxi marker on the Route from A to B.
-        var taxiPos = ride.get('taxiPos');
+      // Add Taxi marker on the Route from A to B.
+      var taxiPos = ride.get('taxiPos');
+      if (ride.get('state') == 'POB' && taxiPos && taxiPos.lat && taxiPos.lon) {
         directionsOptions.waypoints.push({
           location: new google.maps.LatLng(taxiPos.lat, taxiPos.lon)
         });
