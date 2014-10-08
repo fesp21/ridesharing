@@ -232,7 +232,7 @@ angular.module('rideSharingApp')
     $scope.$watch('state', function(state, oldState){
       if (state === oldState) return;
 
-      $log.debug('Watcher updating Route.');
+      $log.debug('State Watcher updating Route.');
       updateRoute(rideInfo);
 
       // In final state show the taxi marker.
@@ -245,6 +245,13 @@ angular.module('rideSharingApp')
 
       // Update Height of Map Canvas
       updateInfoBoxHeight();
+    });
+
+    $scope.$watchCollection('markers.taxi.coords', function(newCoords, oldCoords){
+      if (newCoords === oldCoords) return;
+
+      $log.debug('TaxiPos Watcher updating Route.');
+      updateRoute(rideInfo);
     });
 
 
