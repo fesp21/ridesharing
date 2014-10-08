@@ -12,8 +12,11 @@ angular.module('rideSharingApp')
     Ride.prototype = Object.create(PropertyModel.prototype);
 
     Ride.prototype.accessors = {
+      get_dropOff: function () {
+        return this.properties.dropOffPos && this.properties.dropOffPos.location || this.properties.destination;
+      },
       get_destination: function () {
-        return this.properties.destination || (this.properties.dropOffPos && this.properties.dropOffPos.location);
+        return this.properties.destination || (this.isDone() && this.properties.dropOffPos && this.properties.dropOffPos.location);
       },
       get_taxiPos: function () {
         return this.properties.taxiPos && this.properties.taxiPos.location;
