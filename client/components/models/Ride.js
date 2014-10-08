@@ -16,7 +16,10 @@ angular.module('rideSharingApp')
         return this.properties.dropOffPos && this.properties.dropOffPos.location || this.properties.destination;
       },
       get_destination: function () {
-        return this.properties.destination || (this.isDone() && this.properties.dropOffPos && this.properties.dropOffPos.location);
+        if (this.isDone() && this.properties.dropOffPos && this.properties.dropOffPos.location) {
+          return this.properties.dropOffPos.location;
+        }
+        return this.properties.destination;
       },
       get_taxiPos: function () {
         return this.properties.taxiPos && this.properties.taxiPos.location;

@@ -70,11 +70,12 @@ angular.module('rideSharingApp')
     }
 
     var updateRoute = function(ride) {
-      if (!ride.get('destination')) return false;
+      var routeDest = ride.get('destination') || ride.get('taxiPos');
+      if (!routeDest) return false;
 
       var directionsOptions = {
         origin: getLatLonString(ride.get('pickup')),
-        destination: getLatLonString(ride.get('destination')),
+        destination: getLatLonString(routeDest),
         waypoints: [],
         travelMode: 'driving',
         unitSystem: 'metric',
@@ -83,7 +84,7 @@ angular.module('rideSharingApp')
 
       // Add Taxi marker on the Route from A to B.
       var taxiPos = ride.get('taxiPos');
-      if (ride.get('state') == 'POB' && taxiPos && taxiPos.lat && taxiPos.lon) {
+      if (ride.get('destination') && ride.get('state') == 'POB' && taxiPos && taxiPos.lat && taxiPos.lon) {
         directionsOptions.waypoints.push({
           location: new google.maps.LatLng(taxiPos.lat, taxiPos.lon)
         });
@@ -209,10 +210,14 @@ angular.module('rideSharingApp')
         longitude: rideInfo.get('destination').lon,
       };
 
-      $scope.route.path = [
-        $scope.markers.pickup.coords,
-        $scope.markers.destination.coords,
-      ];
+      $scope.route.path.push($scope.markers.destination.coords);
+    }
+    else if (rideInfo.get('taxiPos')) {
+      $scope.route.path.push({
+        latitude: rideInfo.get('taxiPos').lat,
+        longitude: rideInfo.get('taxiPos').lon,
+      });
+      $scope.route.visible = true;
     }
 
 
@@ -252,6 +257,10 @@ angular.module('rideSharingApp')
 
       $log.debug('TaxiPos Watcher updating Route.');
       updateRoute(rideInfo);
+
+      if (!rideInfo.get('destination')) {
+        updateMapBounds();
+      }
     });
 
 
