@@ -70,20 +70,21 @@ angular.module('rideSharingApp')
     }
 
     var updateRoute = function(ride) {
-      if (!ride.get('destination')) return false;
+      var routeDest = ride.get('destination') || ride.get('taxiPos');
+      if (!routeDest) return false;
 
       var directionsOptions = {
         origin: getLatLonString(ride.get('pickup')),
-        destination: getLatLonString(ride.get('destination')),
+        destination: getLatLonString(routeDest),
         waypoints: [],
         travelMode: 'driving',
         unitSystem: 'metric',
         durationInTraffic: true,
       };
 
-      if (ride.get('state') == 'POB' && ride.get('taxiPos')) {
-        // Add Taxi marker on the Route from A to B.
-        var taxiPos = ride.get('taxiPos');
+      // Add Taxi marker on the Route from A to B.
+      var taxiPos = ride.get('taxiPos');
+      if (ride.get('destination') && ride.get('state') == 'POB' && taxiPos && taxiPos.lat && taxiPos.lon) {
         directionsOptions.waypoints.push({
           location: new google.maps.LatLng(taxiPos.lat, taxiPos.lon)
         });
@@ -122,8 +123,10 @@ angular.module('rideSharingApp')
         }
       });
 
-      var longAddress = ride.get('destination').placeName.split(',');
-      $scope.destinationPlaceName = longAddress[0];
+      if (ride.get('destination').placeName) {
+        var longAddress = ride.get('destination').placeName.split(',');
+        $scope.destinationPlaceName = longAddress[0];
+      }
     };
 
 
@@ -207,10 +210,14 @@ angular.module('rideSharingApp')
         longitude: rideInfo.get('destination').lon,
       };
 
-      $scope.route.path = [
-        $scope.markers.pickup.coords,
-        $scope.markers.destination.coords,
-      ];
+      $scope.route.path.push($scope.markers.destination.coords);
+    }
+    else if (rideInfo.get('taxiPos')) {
+      $scope.route.path.push({
+        latitude: rideInfo.get('taxiPos').lat,
+        longitude: rideInfo.get('taxiPos').lon,
+      });
+      $scope.route.visible = true;
     }
 
 
@@ -230,7 +237,7 @@ angular.module('rideSharingApp')
     $scope.$watch('state', function(state, oldState){
       if (state === oldState) return;
 
-      $log.debug('Watcher updating Route.');
+      $log.debug('State Watcher updating Route.');
       updateRoute(rideInfo);
 
       // In final state show the taxi marker.
@@ -245,12 +252,22 @@ angular.module('rideSharingApp')
       updateInfoBoxHeight();
     });
 
+    $scope.$watchCollection('markers.taxi.coords', function(newCoords, oldCoords){
+      if (newCoords === oldCoords) return;
+
+      $log.debug('TaxiPos Watcher updating Route.');
+      updateRoute(rideInfo);
+
+      if (!rideInfo.get('destination')) {
+        updateMapBounds();
+      }
+    });
+
 
     liftagoService.getRideInfoPoller(rideHash).then(null, null, function(ride){
       // Update the rideInfo object first so that Interval and Watcher are ok with using rideInfo
       rideInfo = ride;
 
-      $log.debug('Yay! New ride data are here!', ride);
       updateRideInfo(ride);
 
       if (ride.isDone()) {
