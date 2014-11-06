@@ -1,11 +1,36 @@
 <!doctype html>
-<html class="no-js" ng-app="rideSharingApp">
+<html class="no-js" ng-app="rideSharingApp" itemscope itemtype="http://schema.org/Product" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title ng-bind="'My Liftago Ride' | translate"></title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
+    <title ng-bind="'My Liftago Ride' | translate"></title>
+    <meta name="description" content="{{ 'I\'m on my way.' | translate }} {{ 'Watch me arrive.' | translate }}">
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="{{ 'I\'m on my way.' | translate }}">
+    <meta itemprop="description" content="{{ 'Watch me arrive.' | translate }}">
+    <meta itemprop="image" content="{{imageUrl}}">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@Liftago">
+    <meta name="twitter:title" content="{{ 'I\'m on my way.' | translate }}">
+    <meta name="twitter:description" content="{{ 'Watch me arrive.' | translate }}">
+    <meta name="twitter:image:src" content="{{imageUrl}}">
+    <meta name="twitter:image:width" content="133" />
+    <meta name="twitter:image:height" content="59" />
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{ 'I\'m on my way.' | translate }}" />
+    <meta property="og:description" content="{{ 'Watch me arrive.' | translate }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{shortUrl}}" />
+    <meta property="og:image" content="{{imageUrl}}" />
+    <meta property="og:image:width" content="133" />
+    <meta property="og:image:height" content="59" />
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->

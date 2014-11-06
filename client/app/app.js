@@ -30,7 +30,10 @@ angular.module('rideSharingApp', [
 
   })
 
-  .run(function ($window, tmhDynamicLocale, supportedLanguages, gettextCatalog) {
+  .run(function ($rootScope, $window, $location, tmhDynamicLocale, supportedLanguages, gettextCatalog, appConfig) {
+
+    $rootScope.shortUrl = appConfig.get('short.url') + $location.path();
+    $rootScope.imageUrl = $window.location.origin + '/assets/images/logo.png';
 
     var
       lang = $window.session && $window.session.locale && $window.session.locale.lang,
