@@ -1,14 +1,14 @@
 {
   "name": "ride-sharing",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "dependencies": {
-    "angular": ">=1.2.*",
+    "angular": "~1.2.26",
     "json3": "~3.3.1",
     "es5-shim": "~3.0.1",
     "jquery": "~1.11.0",
-    "angular-resource": ">=1.2.*",
-    "angular-cookies": ">=1.2.*",
-    "angular-sanitize": ">=1.2.*",
+    "angular-resource": "~1.2.26",
+    "angular-cookies": "~1.2.26",
+    "angular-sanitize": "~1.2.26",
     "ngstorage": "~0.3.0",
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.10",
@@ -16,16 +16,13 @@
     "angular-dynamic-locale": "~0.1.17",
     "angulartics": "~0.16.5",
     "session.js": "~0.4.1",
-    "angular-i18n": "~1.2.*",
+    "angular-i18n": "~1.2.26",
     "angular-google-maps": "=1.2.1",
     "angularjs-google-directions": "*",
     "angular-poller": "~0.2.4"
   },
   "devDependencies": {
-    "angular-mocks": ">=1.2.*",
-    "angular-scenario": ">=1.2.*"
-  },
-  "resolutions": {
-    "angular": "1.2.24"
+    "angular-mocks": "~1.2.26",
+    "angular-scenario": "~1.2.26"
   }
 }
