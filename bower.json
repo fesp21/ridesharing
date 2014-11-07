@@ -17,7 +17,7 @@
     "angulartics": "~0.16.5",
     "session.js": "~0.4.1",
     "angular-i18n": "~1.2.24",
-    "angular-google-maps": "~1.2.1",
+    "angular-google-maps": "=1.2.3",
     "angularjs-google-directions": "*",
     "angular-poller": "~0.2.4"
   },
