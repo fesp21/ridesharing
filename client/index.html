@@ -1,11 +1,32 @@
 <!doctype html>
-<html class="no-js" ng-app="rideSharingApp">
+<html class="no-js" ng-app="rideSharingApp" itemscope itemtype="http://schema.org/Product" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title ng-bind="'My Liftago Ride' | translate"></title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
+    <title>My Liftago Ride</title>
+    <meta name="description" content="I'm on my way. Watch me arrive.">
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="I'm on my way.">
+    <meta itemprop="description" content="Watch me arrive.">
+    <meta itemprop="image" content="http://rideinfosharing-eutest.jelastic.dogado.eu/social.png">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@Liftago">
+    <meta name="twitter:title" content="I'm on my way.">
+    <meta name="twitter:description" content="Watch me arrive.">
+    <meta name="twitter:image:src" content="http://rideinfosharing-eutest.jelastic.dogado.eu/social.png">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="I'm on my way." />
+    <meta property="og:description" content="Watch me arrive." />
+    <meta property="og:type" content="article" />
+    <!-- <meta property="og:url" content="{{shortUrl}}" /> -->
+    <meta property="og:image" content="http://rideinfosharing-eutest.jelastic.dogado.eu/social.png" />
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
