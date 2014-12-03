@@ -17,6 +17,10 @@ msgid "Hi there, my trip with Liftago is over now."
 msgstr ""
 
 #: client/index.html
+msgid "I'm on my way."
+msgstr ""
+
+#: client/index.html
 msgid "My Liftago Ride"
 msgstr ""
 
@@ -26,4 +30,8 @@ msgstr ""
 
 #: client/app/main/main.html
 msgid "Right now, I'm waiting for my Liftago driver."
+msgstr ""
+
+#: client/index.html
+msgid "Watch me arrive."
 msgstr ""

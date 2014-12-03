@@ -9,7 +9,7 @@ msgstr ""
 "Last-Translator: Liftago <crowdin@adleritech.com>\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2014-09-15 08:50-0400\n"
+"PO-Revision-Date: 2014-11-07 01:50-0500\n"
 
 #: client/app/main/main.html
 msgid "Check me out! Right now, I'm sitting in Liftago taxi."
@@ -24,6 +24,10 @@ msgid "Hi there, my trip with Liftago is over now."
 msgstr "Hi there, my trip with Liftago is over now."
 
 #: client/index.html
+msgid "I'm on my way."
+msgstr "I'm on my way."
+
+#: client/index.html
 msgid "My Liftago Ride"
 msgstr "My Liftago Ride"
 
@@ -34,4 +38,8 @@ msgstr "Right now, I'm sitting in Liftago taxi and going to <strong>{{destinatio
 #: client/app/main/main.html
 msgid "Right now, I'm waiting for my Liftago driver."
 msgstr "Right now, I'm waiting for my Liftago driver."
+
+#: client/index.html
+msgid "Watch me arrive."
+msgstr "Watch me arrive."
 
